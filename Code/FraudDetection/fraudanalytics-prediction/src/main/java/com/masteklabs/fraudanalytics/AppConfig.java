@@ -1,0 +1,132 @@
+package com.masteklabs.fraudanalytics;
+
+import java.beans.PropertyVetoException;
+import java.sql.SQLException;
+
+import javax.naming.NamingException;
+
+import org.apache.log4j.Logger;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.GenericToStringSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import com.masteklabs.fraudanalytics.mysql.repo.AccountMasterRepo;
+import com.masteklabs.fraudanalytics.mysql.repo.CustomerMasterRepo;
+import com.masteklabs.fraudanalytics.mysql.repo.SuspectedTransactionRepo;
+import com.masteklabs.fraudanalytics.mysql.repo.impl.AccountMasterRepoImpl;
+import com.masteklabs.fraudanalytics.mysql.repo.impl.CustomerMasterRepoImpl;
+import com.masteklabs.fraudanalytics.mysql.repo.impl.SuspectedTransactionRepoImpl;
+import com.masteklabs.fraudanalytics.redis.repo.AccountInfoRepo;
+import com.masteklabs.frauddetection.common.CommonConstants;
+import com.masteklabs.frauddetection.redis.repo.impl.AccountInfoRepoImpl;
+import com.masteklabs.frauddetection.redis.repo.impl.CreditCardTransactionRepoImpl;
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+
+import redis.clients.jedis.JedisPoolConfig;
+
+@Configuration
+@ComponentScan
+public class AppConfig {
+	
+	static final Logger log = Logger.getLogger(AppConfig.class.getName());
+	
+	@Bean
+	JedisConnectionFactory jedisConnectionFactory() {
+		JedisConnectionFactory connFactory = new JedisConnectionFactory();
+		JedisPoolConfig poolConfig = new JedisPoolConfig();
+		poolConfig.setMaxTotal(CommonConstants.REDIS_POOL_CONNECTIONS);
+
+		connFactory.setHostName(CommonConstants.REDIS_HOST);
+		connFactory.setPort(CommonConstants.REDIS_PORT);
+		connFactory.setPassword(CommonConstants.REDIS_PASSWORD);
+		connFactory.setUsePool(true);
+		connFactory.setPoolConfig(poolConfig);
+		return connFactory;
+	}
+
+	@Bean(name = "redisTransactionTemplateString")
+	RedisTemplate<String, Object> redisTransactionTemplate() {
+		final RedisTemplate<String, Object> template = new RedisTemplate<String, Object>();
+		template.setConnectionFactory(jedisConnectionFactory());
+		template.setKeySerializer(new StringRedisSerializer());
+		  template.setValueSerializer( new GenericToStringSerializer< Object >( Object.class ) );
+		template.setHashValueSerializer(new GenericToStringSerializer<Object>(Object.class));
+		template.setConnectionFactory(jedisConnectionFactory());
+		// template.setDefaultSerializer( new RedisSerializer() );
+		return template;
+	}
+
+	@Bean(name = "redisTransactionTemplateLong")
+	RedisTemplate<Long, Object> redisTransactionTemplateNew() {
+		final RedisTemplate<Long, Object> template = new RedisTemplate<Long, Object>();
+		 template.setConnectionFactory( jedisConnectionFactory() );
+		 template.setKeySerializer( new GenericToStringSerializer< Object >( Object.class ) );
+		  template.setHashValueSerializer( new GenericToStringSerializer< Object >( Object.class ) );
+		  template.setValueSerializer( new GenericToStringSerializer< Object >( Object.class ) );
+		  template.setConnectionFactory(jedisConnectionFactory());
+		return template;
+	}
+
+	@Bean(name = "dataSource")
+	ComboPooledDataSource dataSource() throws SQLException, NamingException, PropertyVetoException {
+		final ComboPooledDataSource dataSource = new ComboPooledDataSource();
+
+		dataSource.setDriverClass(CommonConstants.MYSQL_JDBC_DRIVER);
+		dataSource.setJdbcUrl(CommonConstants.MYSQL_JDBC_URL);
+		dataSource.setUser(CommonConstants.MYSQL_USERNAME);
+		dataSource.setPassword(CommonConstants.MYSQL_PASSWORD);
+		dataSource.setInitialPoolSize(CommonConstants.MYSQL_INITIAL_POOL_SIZE);
+		dataSource.setMaxPoolSize(CommonConstants.MYSQL_MAX_POOL_SIZE);
+		return dataSource;
+
+	}
+	@Bean(name="jdbcTemplate")
+	 JdbcTemplate jdbcTemplate() throws SQLException, NamingException, PropertyVetoException{
+		 final JdbcTemplate jdbcTemplate=new JdbcTemplate();
+		 jdbcTemplate.setDataSource(dataSource());
+		 return jdbcTemplate;
+		 
+	 }
+	
+	@Bean(name="customerMasterRepo")
+	CustomerMasterRepo customerMasterRepo() throws SQLException, NamingException, PropertyVetoException{
+		CustomerMasterRepoImpl customerMasterRepo=new  CustomerMasterRepoImpl();
+	//	customerMasterRepo.setJdbcTemplate(jdbcTemplate());
+		return customerMasterRepo;
+	}
+	@Bean(name="accountInfoRepo")
+	AccountInfoRepo accountInfoRepo(){
+		AccountInfoRepoImpl accountInfoRepo=new  AccountInfoRepoImpl();
+	//	accountInfoRepo.setRedisTemplate(redisTransactionTemplateNew());
+		return accountInfoRepo;
+	}
+	@Bean(name="accountMasterRepo")
+	AccountMasterRepo accountMasterRepo() throws SQLException, NamingException, PropertyVetoException{
+		AccountMasterRepoImpl accountMasterRepo=new  AccountMasterRepoImpl();
+		//accountMasterRepo.setJdbcTemplate(jdbcTemplate());
+		return accountMasterRepo;
+	}
+	
+	@Bean(name="suspectedTransactionRepo")
+	SuspectedTransactionRepo suspectedTransactionRepo() throws SQLException, NamingException, PropertyVetoException{
+		SuspectedTransactionRepoImpl suspectedTransactionRepo=new  SuspectedTransactionRepoImpl();
+		//suspectedTransactionRepo.setJdbcTemplate(jdbcTemplate());
+		return suspectedTransactionRepo;
+	}
+	@Bean(name="creditCardTransactionRepo")
+	CreditCardTransactionRepoImpl creditCardTransactionRepo(){
+		CreditCardTransactionRepoImpl creditCardTransactionRepo=new  CreditCardTransactionRepoImpl();
+		//creditCardTransactionRepo.setRedisTransactionTemplateString(redisTransactionTemplate());
+		return creditCardTransactionRepo;
+	}
+
+	
+
+
+
+}

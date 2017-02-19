@@ -1,0 +1,75 @@
+Zookeeper should be in start state:-
+ps -ef|grep zookeeper
+You can test it by running the following command:
+netstat -ant | grep :2181
+
+
+    PS1="\[\e]0;TestOutput\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
+  
+   PS1="\[\e]0;RedisServer\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
+
+Start Kafka Broker:-
+nohup /usr/local/kafka/bin/kafka-server-start.sh /usr/local/kafka/config/server.properties /usr/local/kafka.log 2>&1 &
+PS1="\[\e]0;KafkaBroker\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
+
+Create Kafka topic:-
+PS1="\[\e]0;KafkaTopic_Testing1\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
+sudo /usr/local/kafka/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic testing1
+  sudo /usr/local/kafka/bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic testing1 --from-beginning
+ 
+PS1="\[\e]0;KafkaTopic_Testing2\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
+sudo /usr/local/kafka/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic testing2
+  sudo /usr/local/kafka/bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic testing2 --from-beginning
+ 
+ PS1="\[\e]0;KafkaTopic_Testing3\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
+sudo /usr/local/kafka/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic testing3
+  sudo /usr/local/kafka/bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic testing3 --from-beginning
+ 
+ PS1="\[\e]0;AlertProviderModule\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
+ 
+  PS1="\[\e]0;TransactionProducer\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
+ 
+Deploy uber spark-streaming jar:-
+PS1="\[\e]0;SparkStreaming\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
+cp  /data/masteklabs/spark-streaming-jar-with-dependencies.jar /usr/local/testjars/spark-streaming.jar
+
+./bin/spark-submit \
+  --class com.masteklabs.sparkstreaming.SparkFraudDetection \
+  --master local[5] \
+  /data/masteklabs/FraudDetectionCode/spark/target/spark-streaming-jar-with-dependencies.jar \
+  localhost:9092 \
+  testing1
+  
+  cp  /data/masteklabs/tempFiles/spark-old-streaming-jar-with-dependencies.jar /usr/local/testjars/spark-old-streaming.jar
+  ./bin/spark-submit \
+  --class spark.CreditCardTransactionFeatureDerivation \
+  --master local[3] \
+  /usr/local/testjars/spark-old-streaming.jar \
+  localhost:9092 \
+  testing1
+ 
+ sudo /usr/local/kafka/bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic testing3 --from-beginning
+   ./bin/spark-submit \
+  --class SparkFraudDetection \
+  --master local[3] \
+  /usr/local/testjars/spark-streaming.jar \
+  localhost:9092 \
+  testing1
+
+ Selected default - /var/lib/redis/6379
+Please select the redis executable path [/usr/bin/redis-server]
+Selected config:
+Port           : 6379
+Config file    : /etc/redis/6379.conf
+Log file       : /var/log/redis_6379.log
+Data dir       : /var/lib/redis/6379
+Executable     : /usr/bin/redis-server
+Cli Executable : /usr/bin/redis-cli
+
+PS1="\[\e]0;AlertProviderModule\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
+ java -cp alertmodule.jar com.masteklabs.app.AlertProvider
+ 
+ 
+ 
+ sudo /usr/local/kafka/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test2
+  sudo /usr/local/kafka/bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic test2 --from-beginning

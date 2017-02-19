@@ -1,0 +1,74 @@
+Deployment Guide for Fraud detection POC:-
+
+1. Check if zookeeper is running.
+	ps -ef|grep zookeeper
+	If not start zookeeper service.
+
+2. check if Redis server/service is running
+	ps -ef|grep redis
+
+3. Check if MySQL server/service is running.
+	ps -ef|grep mysql
+
+4. check if hadoop namenode,datanodes are running
+	ps -ef|grep hadoop
+	jps
+	
+5. check if Kafka broker is running
+	ps -ef|grep kafka
+	
+	if not start kafka broker as below
+	PS1="\[\e]0;KafkaBroker\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
+	nohup /usr/local/kafka/bin/kafka-server-start.sh /usr/local/kafka/config/server.properties /usr/local/kafka.log 2>&1 &
+
+6. check if all the 3 kafka topics are running
+	ps -ef|grep testing1
+	ps -ef|grep testing2
+	ps -ef|grep testing3
+	
+	If not start the topics as below
+	PS1="\[\e]0;KafkaTopic_Testing1\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
+	sudo /usr/local/kafka/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic testing1
+	
+	PS1="\[\e]0;KafkaTopic_Testing2\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
+	sudo /usr/local/kafka/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic testing2
+	
+	PS1="\[\e]0;KafkaTopic_Testing3\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
+	sudo /usr/local/kafka/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic testing3
+	
+7. 	Check if alert module is running
+	ps -ef|grep alert
+
+	if not start AlertModule as below
+	PS1="\[\e]0;AlertProviderModule\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
+	java -cp /data/masteklabs/FraudDetectionCode/alertmodule/target/alertmodule-0.0.1-SNAPSHOT-jar-with-dependencies.jar com.masteklabs.app.AlertProvider
+	
+8. Check if transaction generator module is running
+	ps -ef|grep server.js
+	
+	if not start the transaction generator module
+	PS1="\[\e]0;TransactionGenerator\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
+	cd /data/masteklabs/FraudDetectionCode/KafkaProducer
+	node server.js
+
+9.	Check if MysqlRedis sync module is running	
+	ps -ef|grep mysqlredis
+	
+	if not start the module as below
+	PS1="\[\e]0;mysqlredis\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
+	java -cp /data/masteklabs/FraudDetectionCode/mysqlredis/target/mysqlredis.jar com.masteklabs.mysqlredis.test.Application
+	
+10. Check if SparkStreaming module is up and running
+	ps -ef|grep spark
+	
+	if not start the module as below
+	PS1="\[\e]0;SparkStreaming\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
+	cd /usr/local/spark
+	
+
+
+/usr/local/spark/bin/spark-submit --class com.masteklabs.fraudanalytics.Application --master local[5] /data/masteklabs/FraudDetectionCode/TransactionRespModule/fraudanalytics-prediction/target/fraudanalytics-prediction-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+
+11. check outputs from topics
+
+ sudo /usr/local/kafka/bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic testing3 --from-beginning

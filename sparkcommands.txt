@@ -1,0 +1,37 @@
+http://d3kbcqa49mib13.cloudfront.net/spark-2.0.2-bin-hadoop2.4.tgz
+
+./bin/spark-submit \
+  --class spark.JavaNetworkWordCount \
+  --master local[1] \
+  /usr/local/share/spark/myjars/spark-streaming.jar \
+  localhost 9999
+
+cp  /data/masteklabs/tempFiles/spark-streaming-jar-with-dependencies.jar /usr/local/testjars/spark-streaming.jar
+
+./bin/spark-submit --master local --verbose --jars /usr/local/share/spark/myjars/spark-streaming.jar  --class spark.JavaNetworkWordCount localhost 9999
+
+./bin/spark-submit --master local --verbose --jars /usr/local/testjars/spark-streaming.jar  --class spark.JavaDirectKafkaWordCount localhost 9999
+
+bin/run-example streaming.JavaDirectKafkaWordCount broker1-host:port,broker2-host:port \
+ *      topic1,topic2
+
+ ./bin/spark-submit \
+  --class spark.JavaDirectKafkaWordCount \
+  --master local[2] \
+  /usr/local/testjars/spark-streaming.jar \
+  localhost:9092 \
+  testing
+ 
+
+ PS1="\[\e]0;kKafka\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
+ 
+ sudo /usr/local/kafka/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1  --partitions 1 --topic testing
+  sudo /usr/local/kafka/bin/kafka-topics.sh  --list --zookeeper localhost:2181
+  
+  sudo /usr/local/kafka/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic testing
+  sudo /usr/local/kafka/bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic testing --from-beginning
+  
+  
+  
+  
+   PS1="\[\e]0;SparkStreaming\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
