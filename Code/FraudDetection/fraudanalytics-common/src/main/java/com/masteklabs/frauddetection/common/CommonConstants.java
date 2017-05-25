@@ -38,7 +38,7 @@ public class CommonConstants {
 	public static final int MYSQL_INITIAL_POOL_SIZE=1;
 	public static final int MYSQL_MAX_POOL_SIZE=10;
 	public static final String MYSQL_USERNAME="root";
-	public static final String MYSQL_PASSWORD="";
+	public static final String MYSQL_PASSWORD="mastek";
 	public static final int REDIS_PORT = 6379;
 	public static final int REDIS_POOL_CONNECTIONS = 128;
 	public static final String TRANS_PREFIX = "TRANS_";

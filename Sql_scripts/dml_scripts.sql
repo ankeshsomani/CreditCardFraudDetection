@@ -1,3 +1,4 @@
+use fraudanalytics;
 INSERT INTO customer (customerid,name, dob, emailid,phonenumber,annualincome,gender, address) VALUES (10000,'Charles Zaiontz','1972-01-31','cust1@gmail.com',9820123276,650000,'M','503, H.A tower, Piplene Road');
 INSERT INTO customer (customerid,name, dob, emailid,phonenumber,annualincome,gender, address) VALUES (10001,'Amol  Bhosale','1987-01-27','cust2@gmail.com',9820123276,800000,'M','305, I.A tower, L.A Road');
 INSERT INTO customer (customerid,name, dob, emailid,phonenumber,annualincome,gender, address) VALUES (10002,'Sumit Desai','1992-01-26','cust3@gmail.com',9820123276,500000,'M','101, A.I Building, P.A Road');
