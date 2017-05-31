@@ -3,7 +3,8 @@ package com.masteklabs.mysqlredis.service;
 import java.util.List;
 
 import com.masteklabs.mysqlredis.bean.CustomerMaster;
-import com.masteklabs.mysqlredis.repo.CustomerMasterRepo;
+import com.masteklabs.mysqlredis.mysql.repo.CustomerMasterRepo;
+
 
 public class CustomerMasterService {
 	

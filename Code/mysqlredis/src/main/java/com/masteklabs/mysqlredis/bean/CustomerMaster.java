@@ -15,6 +15,8 @@ public class CustomerMaster implements Serializable{
 	private String name;
 	private String address;
 	private String gender;
+	private String emailId;
+	private String phoneNumber;
 	private Double annualIncome;
 	private Date dob;
 	private List<AccountMaster> accounts;
@@ -56,6 +58,18 @@ public class CustomerMaster implements Serializable{
 		this.dob = dob;
 	}
 	
+	public String getEmailId() {
+		return emailId;
+	}
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 	public List<AccountMaster> getAccounts() {
 		return accounts;
 	}
@@ -70,7 +84,9 @@ public class CustomerMaster implements Serializable{
 		out.append(this.getGender());out.append(",");
 		out.append(this.getName());out.append(",");
 		out.append(this.getAnnualIncome());;out.append(",");
-		out.append(convertDateTOString(this.getDob(),"yyyy-MM-dd"));
+		out.append(convertDateTOString(this.getDob(),"yyyy-MM-dd"));;out.append(",");
+		out.append(this.getEmailId());;out.append(",");
+		out.append(this.getPhoneNumber());;out.append(",");
 		out.append("accounts are as");
 		for(AccountMaster account:this.getAccounts()){
 			out.append(account.getAccountId());out.append(',');

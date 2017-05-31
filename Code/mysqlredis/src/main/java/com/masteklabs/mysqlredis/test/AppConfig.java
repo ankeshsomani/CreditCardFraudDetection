@@ -13,14 +13,14 @@ import org.springframework.data.redis.serializer.GenericToStringSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.masteklabs.mysqlredis.repo.AccountInfoRepo;
-import com.masteklabs.mysqlredis.repo.AccountMasterRepo;
-import com.masteklabs.mysqlredis.repo.CreditCardTransactionRepo;
-import com.masteklabs.mysqlredis.repo.CustomerMasterRepo;
-import com.masteklabs.mysqlredis.repo.impl.AccountInfoRepoImpl;
-import com.masteklabs.mysqlredis.repo.impl.AccountMasterRepoImpl;
-import com.masteklabs.mysqlredis.repo.impl.CreditCardTransactionRepoImpl;
-import com.masteklabs.mysqlredis.repo.impl.CustomerMasterRepoImpl;
+import com.masteklabs.mysqlredis.mysql.repo.AccountMasterRepo;
+import com.masteklabs.mysqlredis.mysql.repo.CustomerMasterRepo;
+import com.masteklabs.mysqlredis.mysql.repo.impl.AccountMasterRepoImpl;
+import com.masteklabs.mysqlredis.mysql.repo.impl.CustomerMasterRepoImpl;
+import com.masteklabs.mysqlredis.redis.repo.AccountInfoRepo;
+import com.masteklabs.mysqlredis.redis.repo.CreditCardTransactionRepo;
+import com.masteklabs.mysqlredis.redis.repo.impl.AccountInfoRepoImpl;
+import com.masteklabs.mysqlredis.redis.repo.impl.CreditCardTransactionRepoImpl;
 import com.masteklabs.mysqlredis.service.AccountMasterService;
 import com.masteklabs.mysqlredis.service.CustomerMasterService;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
@@ -89,7 +89,7 @@ public class AppConfig {
 	        dataSource.setDriverClass("com.mysql.jdbc.Driver");
 	        dataSource.setJdbcUrl("jdbc:mysql://localhost/fraudanalytics");
 	        dataSource.setUser("root");
-	        dataSource.setPassword("mastek");
+	        dataSource.setPassword("");
 	        dataSource.setInitialPoolSize(1);
 	        dataSource.setMaxPoolSize(10);
 	       

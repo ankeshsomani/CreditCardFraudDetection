@@ -3,7 +3,7 @@ package com.masteklabs.mysqlredis.service;
 import java.util.List;
 
 import com.masteklabs.mysqlredis.bean.AccountMaster;
-import com.masteklabs.mysqlredis.repo.AccountMasterRepo;
+import com.masteklabs.mysqlredis.mysql.repo.AccountMasterRepo;
 
 public class AccountMasterService {
 	
