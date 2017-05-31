@@ -67,8 +67,8 @@ public class KafkaHelper {
 				AccountInfoEntity accInfo=accountInfoRepo.find(accId);
 				out.append(predResult.getUniqueIdentifier());out.append(CommonConstants.TRANSACTION_DELIMETER);
 				out.append(predResult.getPrediction());out.append(CommonConstants.TRANSACTION_DELIMETER);	
-				out.append(accInfo.getEmailId());
-				
+				out.append(accInfo.getEmailId());out.append(CommonConstants.TRANSACTION_DELIMETER);
+				out.append(accInfo.getPhoneNumber());
 				log.warn("Before deleting message");
 				//TODO:TO remove later 
 				int predictedVal=new Double(predResult.getPrediction()).intValue();

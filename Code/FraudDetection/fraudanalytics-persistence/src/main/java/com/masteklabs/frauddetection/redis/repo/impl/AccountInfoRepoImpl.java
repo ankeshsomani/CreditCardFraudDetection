@@ -47,6 +47,8 @@ public class AccountInfoRepoImpl implements AccountInfoRepo{
 		}
 		accInfo.setCardType(values.get("cardtype").toString());
 		accInfo.setGender(values.get("gender").toString());
+		accInfo.setEmailId(values.get("emailid").toString());
+		accInfo.setPhoneNumber(values.get("phonenumber").toString());
 		return accInfo;
 		
 	}
