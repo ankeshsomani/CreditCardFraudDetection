@@ -9,12 +9,17 @@ public class Main {
 
 	
 	public static void main(String[] args) {
-		
+		static Long startTransId = 25155100l;
+	static int countNFG = 0;
+	static int posid = 1234;
+	static int accountid = 100;
+	static String description="Sai";
 		
 		Connection con=null;
 		try {
 			con=DBConnection.getConnection();
 			createNonFraudTransactions(con);
+			// createFraudTransactions(con); //comment ethier on the one function
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -54,11 +59,11 @@ public class Main {
 		
 	}
 	private static void createFraudTransactions(Connection con) throws ParseException {
-		int days=6;
+		int days=90;
 		Long startTransId=221211l;
 		Date startDate=sdf.parse("11/02/2017 00:00:00");
-	
-		int count=0;
+		System.out.println("createFraudTransactions");
+		int countFt=0;
 		do{
 			int dailyTransactions= randomSpendAmountFraud[randomWithRange(0,3)];
 			int temp=0;
@@ -78,24 +83,34 @@ public class Main {
 				trans.setId(startTransId);
 				trans.setTransactionId("T"+startTransId);
 				trans.setTransactionscol("F");
+				if (trans.getAccount() == null) {
+					trans.setAccount(accountid);
+				}
+				if (trans.getPosid() == null) {
+					trans.setPosid(posid);
+				}
+				if (trans.getDescription() == null) {
+					trans.setDescription(description);
+				}
 				saveTransactionInDB(con,trans);
+				saveTransactionInCSV(trans.toString());
 				startTransId++;
 				temp++;
 			}
 			while(dailyTransactions>temp);
 			startDate=new Date(t);
-			count++;
+			countFt++;
 		}
-		while(count<days);
+		while(countFt<days);
 		
 	}
 
 	private static void createNonFraudTransactions(Connection con) throws ParseException {
-		int days=10;
+		int days=90;
 		Long startTransId=221211l;
 		Date startDate=sdf.parse("01/02/2017 00:00:00");
 	
-		int count=0;
+		int countNF=0;
 		do{
 			int dailyTransactions= randomDailyTransactions[randomWithRange(0,3)];
 			int temp=0;
@@ -115,15 +130,25 @@ public class Main {
 				trans.setId(startTransId);
 				trans.setTransactionId("T"+startTransId);
 				trans.setTransactionscol(null);
+				if (trans.getAccount() == null) {
+					trans.setAccount(accountid);
+				}
+				if (trans.getPosid() == null) {
+					trans.setPosid(posid);
+				}
+				if (trans.getDescription() == null) {
+					trans.setDescription(description);
+				}
 				saveTransactionInDB(con,trans);
+				saveTransactionInCSV(trans.toString());
 				startTransId++;
 				temp++;
 			}
 			while(dailyTransactions>temp);
 			startDate=new Date(t);
-			count++;
+			countNF++;
 		}
-		while(count<days);
+		while(countNF<days);
 		
 	}
 	static int randomWithRange(int min, int max)
@@ -132,6 +157,19 @@ public class Main {
 	   return (int)(Math.random() * range) + min;
 	}
 
+	private static void saveTransactionInCSV(String records) {
+		// TODO Auto-generated method stub
+		try {
+			BufferedWriter bw= new BufferedWriter(new FileWriter("D:/30-05-17/transcationfile.csv",true));
+					bw.write(records);
+					bw.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		System.out.println("FILE WRITTEN" );
+	}
 	private static void saveTransactionInDB(Connection con,Transaction trans) {
 		try {
 			TransactionRepository.create(trans, con);

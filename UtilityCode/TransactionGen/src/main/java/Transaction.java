@@ -1,14 +1,31 @@
 
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Transaction {
 	
 	private String transactionscol;
 	private String transactionId;
+	private String description;
 	private Long id;
 	private Double amount;
 	private Integer cardNumber;
+	private Integer posid;
+	private Integer accountId;
+	//DD/M
+	public Integer getAccount() {
+		return accountId;
+	}
+	public void setAccount(Integer account) {
+		accountId = account;
+	}
+	public Integer getPosid() {
+		return posid;
+	}
+	public void setPosid(Integer posid) {
+		this.posid = posid;
+	}
 	private Date transactionTime;
 	public String getTransactionId() {
 		return transactionId;
@@ -31,6 +48,10 @@ public class Transaction {
 	public Date getTransactionTime() {
 		return transactionTime;
 	}
+	public String getFormattedTransactionTime() {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/YYYY HH:MM:SS");
+		return formatter.format(getTransactionTime());
+	}
 	public void setTransactionTime(Date transactionTime) {
 		this.transactionTime = transactionTime;
 	}
@@ -45,6 +66,20 @@ public class Transaction {
 	}
 	public void setTransactionscol(String transactionscol) {
 		this.transactionscol = transactionscol;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	
+	 
+	@Override
+	public String toString() {
+		return accountId + "," + transactionId + "," + posid
+				+ "," + getFormattedTransactionTime() + "," + description + "," + amount+"\n";
 	}
 
 
