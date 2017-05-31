@@ -89,7 +89,7 @@ public class AppConfig {
 	        dataSource.setDriverClass("com.mysql.jdbc.Driver");
 	        dataSource.setJdbcUrl("jdbc:mysql://localhost/fraudanalytics");
 	        dataSource.setUser("root");
-	        dataSource.setPassword("");
+	        dataSource.setPassword("mastek");
 	        dataSource.setInitialPoolSize(1);
 	        dataSource.setMaxPoolSize(10);
 	       
