@@ -14,13 +14,13 @@ import org.apache.log4j.Logger;
 
 public class SMSHelper {
     static final Logger log = Logger.getLogger(SMSHelper.class.getName());
-	static String ACCESS_KEY = "AKIAJDI7SYU2FGLNWNOQ", SECRET_KEY = "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";
-	static String TOPIC_ARN = "arn:aws:sns:us-west-2:679279306327:feedback-feedback-dev";
+	static String ACCESS_KEY = "Access_Key", SECRET_KEY = "Secret_Key";
+	static String TOPIC_ARN = "Topic";
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub	
 		String message = "Demo SMS message body";
-		String phoneNumber = "+9769649218";
+		String phoneNumber = "Phone";
 		Map<String, MessageAttributeValue> smsAttributes = new HashMap<String, MessageAttributeValue>();
 		sendSMSMessage( message, phoneNumber, smsAttributes);
 	}
