@@ -25,8 +25,7 @@ public class MailHelper {
 		sendSMSMessage( message, phoneNumber, smsAttributes);
 	}
 
-	private static void sendSMSMessage( String message, String phoneNumber,
-			Map<String, MessageAttributeValue> smsAttributes) {
+	private static void sendSMSMessage( String message, String phoneNumber) {
 		// TODO Auto-generated method stub
 		@SuppressWarnings("deprecation")
 		try{
