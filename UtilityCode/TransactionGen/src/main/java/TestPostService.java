@@ -56,7 +56,7 @@ public class TestPostService {
 				sendPost(jsonInString);
 				
 				Thread.sleep(1000);
-				break;
+				//break; //for singlee transcations only
 			}
 
 		} catch (FileNotFoundException e) {
