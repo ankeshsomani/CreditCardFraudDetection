@@ -25,8 +25,8 @@ public class MailHelper {
                 props.put("mail.smtp.auth", "true");
                 props.put("mail.smtp.port", "465");
         }
-        public static final String FROM_MAIL_ADDR="somanireyansh@gmail.com";
-        public static final String FROM_MAIL_ADDR_PWD="ankesh007#";
+        public static final String FROM_MAIL_ADDR="senderemailid@gmail.com";
+        public static final String FROM_MAIL_ADDR_PWD="password";
 
         public static void sendMail(String recipientMailAddr, String subject, String msgBody) {
                 log.warn("in this block 2");
