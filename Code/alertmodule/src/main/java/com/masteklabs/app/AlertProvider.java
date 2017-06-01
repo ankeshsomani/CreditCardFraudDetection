@@ -58,11 +58,15 @@ public class AlertProvider {
  if(prediction.equals("1.0")){
 
                 MailHelper.sendMail(retrieveRecipientAddress(record.value()), subject, message);
+				SMSHelper.sendSMS(retrieveRecipientSMS(record.value()),message);
 }
         }
 
         private static String retrieveRecipientAddress(String message) {
                 return COMMA_REGEX.split(message)[2];
+        }
+		private static String retrieveRecipientSMS(String message) {
+                return COMMA_REGEX.split(message)[3];
         }
 
         private static String createMessage(ConsumerRecord<String, String> record) {
@@ -73,7 +77,7 @@ public class AlertProvider {
                 }
                 StringBuilder out=new StringBuilder();
                 String transRefNumber=COMMA_REGEX.split(key)[0];
-                out.append("Hello, We have received a suspicious transaction from your account.The transaction reference number is "+transRefNumber+".You will require OTP 123456 to approve the transaction");
+                out.append("We have detected a suspicious transaction from your account having transaction reference #"+transRefNumber+". Please SMS, STOP "+transRefNumber+" to 12345 to block this transcation.");
                 return out.toString();
         }
 
