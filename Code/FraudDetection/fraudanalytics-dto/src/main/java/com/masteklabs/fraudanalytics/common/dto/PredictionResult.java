@@ -62,7 +62,7 @@ public class PredictionResult implements Serializable{
 	public Double getCardNumber() {
 		return cardNumber;
 	}
-	public void setCardNumber(Double cardNumber) {
+	public void setCardNumber(Long cardNumber) {
 		this.cardNumber = cardNumber;
 	}
 
