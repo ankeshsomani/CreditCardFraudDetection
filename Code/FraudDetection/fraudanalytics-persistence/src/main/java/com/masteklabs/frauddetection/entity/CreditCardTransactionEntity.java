@@ -20,9 +20,9 @@ public class CreditCardTransactionEntity implements Serializable{
 	private String date;
 	private Long accountId;
 	private String description;
-	private double amount;
+	protected double amount;
 	private Long posid;
-	private Long cardNumber;
+	protected Long cardNumber;
 	private Date transactionDate;
 	
 	public String getTransactionId() {
