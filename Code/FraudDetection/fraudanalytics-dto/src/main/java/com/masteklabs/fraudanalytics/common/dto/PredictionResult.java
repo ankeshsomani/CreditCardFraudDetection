@@ -18,7 +18,7 @@ public class PredictionResult implements Serializable{
 	private Long accountId;
 	private Long transactionTime;
 	private Double amount;
-	private Double cardNumber; 
+	private Long cardNumber; 
 
 
 	public Long getAccountId() {
