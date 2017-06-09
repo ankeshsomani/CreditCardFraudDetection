@@ -12,6 +12,8 @@ public class SuspectedTransactionEntity extends CreditCardTransactionEntity {
 	
 	private Date createdOn;
 	private Date modifiedOn;
+	private Double amount;
+	private Long cardNumber; 
 	public Integer getFraudStatus() {
 		return fraudStatus;
 	}
@@ -31,5 +33,17 @@ public class SuspectedTransactionEntity extends CreditCardTransactionEntity {
 		this.modifiedOn = modifiedOn;
 	}
 	
+	public double getAmount() {
+		return amount;
+	}
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+	public double getCardNumber() {
+		return cardNumber;
+	}
+	public void setCardNumber( Long cardNumber) {
+		this.cardNumber = cardNumber;
+	}
 	
 }

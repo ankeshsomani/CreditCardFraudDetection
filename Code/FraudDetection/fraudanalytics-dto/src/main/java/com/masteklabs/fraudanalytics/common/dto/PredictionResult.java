@@ -17,6 +17,8 @@ public class PredictionResult implements Serializable{
 	private String prediction;
 	private Long accountId;
 	private Long transactionTime;
+	private Double amount;
+	private Double cardNumber; 
 
 
 	public Long getAccountId() {
@@ -49,6 +51,19 @@ public class PredictionResult implements Serializable{
 
 	public void setTransactionTime(Long transactionTime) {
 		this.transactionTime = transactionTime;
+	}
+	
+	public Double getAmount() {
+		return amount;
+	}
+	public void setAmount(Double amount) {
+		this.amount = amount;
+	}
+	public Double getCardNumber() {
+		return cardNumber;
+	}
+	public void setCardNumber(Double cardNumber) {
+		this.cardNumber = cardNumber;
 	}
 
 	@Override

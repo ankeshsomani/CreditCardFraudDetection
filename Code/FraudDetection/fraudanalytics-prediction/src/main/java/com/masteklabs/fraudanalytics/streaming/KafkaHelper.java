@@ -78,6 +78,8 @@ public class KafkaHelper {
 					suspectedTransactionEntity.setDate(CommonUtils.getStringFromDateTime("dd/MM/yyyy HH:mm:ss",predResult.getTransactionTime()));
 					suspectedTransactionEntity.setTransactionId(predResult.getUniqueIdentifier());
 					suspectedTransactionEntity.setFraudStatus(0);
+					suspectedTransactionEntity.setAmount(predResult.getAmount());
+					suspectedTransactionEntity.setCardNumber(predResult.setCardNumber());
 					SuspectedTransactionRepo suspectedTransRepo=(SuspectedTransactionRepo)appContext.getBean("suspectedTransactionRepo");
 					suspectedTransRepo.save(suspectedTransactionEntity);
 				}
