@@ -33,17 +33,17 @@ public class SuspectedTransactionEntity extends CreditCardTransactionEntity {
 		this.modifiedOn = modifiedOn;
 	}
 	
-	public double getAmount() {
-		return super.getAmount();
-	}
-	public void setAmount(double amount) {
-		super.setAmount(amount);
-	}
-	public double getCardNumber() {
-		return super.getCardNumber();
-	}
-	public void setCardNumber( Long cardNumber) {
-		super.setCardNumber(cardNumber);
-	}
+	// public double getAmount() {
+		// return super.getAmount();
+	// }
+	// public void setAmount(double amount) {
+		// super.setAmount(amount);
+	// }
+	// public double getCardNumber() {
+		// return super.getCardNumber();
+	// }
+	// public void setCardNumber( Long cardNumber) {
+		// super.setCardNumber(cardNumber);
+	// }
 	
 }
