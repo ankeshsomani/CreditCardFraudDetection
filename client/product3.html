@@ -2,178 +2,195 @@
 <!--
 To change this license header, choose License Headers in Project Properties.To change this template file, choose Tools | Templatesand open the template in the editor.-->
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Mykita Shopping Destination</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/image_slide.js"></script>
-			<script>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<title>Mykita Shopping Destination</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/image_slide.js"></script>
+<script>
 	function addToCart() {
-	 if(typeof(Storage) !== "undefined") {
-	if (localStorage.price) {
-    localStorage.price = Number(localStorage.price) + 74999;
-} else {
-    localStorage.price = 74999;
-}
-}
-//	    if(typeof(Storage) != "undefined") {
-//	if (localStorage.price) {
-//    localStorage.price =0 ;//reset
-//} else {
-//    localStorage.price = 0;//reset
-//}
-//}
-document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.price + " time(s).";
-}
-	</script>
-  </head>
-  <body>
-    <!--        <div>TODO write content</div>
-        Input: <input type="text" name="Input"><br>        <script>            var inputtxt = document.getElementById('Input').value            document.write(inputtxt)        </script>-->
-    &lt;
-    <div class="sidebar">
-      <div style="height:50px;"></div>
-      <div class="sidebar_item">
-        <h2>Brand</h2>
-        <p><input name="Blue" value="Blue" type="checkbox"> Addidas<br>
-          <input name="Black" value="Black" checked="checked" type="checkbox">
-          Nike<br>
-          <input name="Black" value="Black" checked="checked" type="checkbox">
-          Reebok<br>
-        </p>
-      </div>
-      <!--close sidebar_item-->
-      <div class="sidebar_item">
-        <h2>Color</h2>
-        <p><input name="Blue" value="Blue" type="checkbox"> Blue<br>
-          <input name="Blue" value="Blue" type="checkbox"> Yellow<br>
-          <input name="Blue" value="Blue" type="checkbox"> White<br>
-          <input name="Blue" value="Blue" type="checkbox"> Green<br>
-          <input name="Black" value="Black" checked="checked" type="checkbox">
-          Black</p>
-      </div>
-      <!--close sidebar_item-->
-      <div class="sidebar_item">
-        <h2>Size</h2>
-        <p><input name="Blue" value="Blue" type="checkbox"> Small<br>
-          <input name="Blue" value="Blue" type="checkbox"> Medium<br>
-          <input name="Blue" value="Blue" type="checkbox"> Large<br>
-          <input name="Blue" value="Blue" type="checkbox"> XXL<br>
-        </p>
-      </div>
-      <!--close sidebar_item-->
-      <div class="sidebar_item">
-        <h2>Discount</h2>
-        <p><input name="Blue" value="Blue" type="checkbox"> &lt; 5%<br>
-          <input name="Blue" value="Blue" type="checkbox"> &lt; 10%<br>
-          <input name="Blue" value="Blue" type="checkbox"> &lt; 15%<br>
-        </p>
-      </div>
-      <!--close sidebar_item--> </div>
-    <!--close sidebar-->
-    <table style="width: 904px; height: 35px;" align="centre">
-      <tbody>
-        <tr>
-          <th>
-            <h1 align="center"> <!--<img style="width: 70px; height: 38px;" title="ICON"
+		if (typeof (Storage) !== "undefined") {
+			if (localStorage.price) {
+				localStorage.price = Number(localStorage.price) + 74999;
+			} else {
+				localStorage.price = 74999;
+			}
+		}
+		//	    if(typeof(Storage) != "undefined") {
+		//	if (localStorage.price) {
+		//    localStorage.price =0 ;//reset
+		//} else {
+		//    localStorage.price = 0;//reset
+		//}
+		//}
+		document.getElementById("result").innerHTML = "You have clicked the button "
+				+ localStorage.price + " time(s).";
+	}
+</script>
+</head>
+<body>
+	<div class="sidebar">
+		<div style="height: 50px;"></div>
+		<div class="sidebar_item">
+			<h2>Brand</h2>
+			<p>
+				<input name="Blue" value="Blue" type="checkbox"> Addidas<br>
+				<input name="Black" value="Black" checked="checked" type="checkbox">
+				Nike<br> <input name="Black" value="Black" checked="checked"
+					type="checkbox"> Reebok<br>
+			</p>
+		</div>
+		<!--close sidebar_item-->
+		<div class="sidebar_item">
+			<h2>Color</h2>
+			<p>
+				<input name="Blue" value="Blue" type="checkbox"> Blue<br>
+				<input name="Blue" value="Blue" type="checkbox"> Yellow<br>
+				<input name="Blue" value="Blue" type="checkbox"> White<br>
+				<input name="Blue" value="Blue" type="checkbox"> Green<br>
+				<input name="Black" value="Black" checked="checked" type="checkbox">
+				Black
+			</p>
+		</div>
+		<!--close sidebar_item-->
+		<div class="sidebar_item">
+			<h2>Size</h2>
+			<p>
+				<input name="Blue" value="Blue" type="checkbox"> Small<br>
+				<input name="Blue" value="Blue" type="checkbox"> Medium<br>
+				<input name="Blue" value="Blue" type="checkbox"> Large<br>
+				<input name="Blue" value="Blue" type="checkbox"> XXL<br>
+			</p>
+		</div>
+		<!--close sidebar_item-->
+		<div class="sidebar_item">
+			<h2>Discount</h2>
+			<p>
+				<input name="Blue" value="Blue" type="checkbox"> &lt; 5%<br>
+				<input name="Blue" value="Blue" type="checkbox"> &lt; 10%<br>
+				<input name="Blue" value="Blue" type="checkbox"> &lt; 15%<br>
+			</p>
+		</div>
+		<!--close sidebar_item-->
+	</div>
+	<!--close sidebar-->
+	<table style="width: 904px; height: 35px;" align="centre">
+		<tbody>
+			<tr>
+				<th>
+					<h1 align="center">
+						<!--<img style="width: 70px; height: 38px;" title="ICON"
 
-                alt="icon" src="images/icon.jpg"><--></h1>
-          </th>
-          <th align="center">
-            <h1 style="color:#cc66ff;" align="center">&nbsp;Mykita</h1>
-          </th>
-		  <th>
-            <h1 align="center"><a href="product3buy.html"><img style="width: 70px; height: 38px;" title="ICON"
-
-                alt="icon" src="images/icon.jpg"></a></h1>
-          </th>
-        </tr>
-      </tbody>
-    </table>
-    <table style="width: 901px; height: 469px;" align="centre">
-      <tbody>
-        <tr>
-		<th></th>
-          <th>
-            <h2 style="margin: 0px 0px 10px; padding: 0px; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 22.44px; line-height: normal; font-family: Arial, Helvetica, sans-serif; letter-spacing: -1px; color: rgb(0, 0, 0); orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; text-align: left;">
-			Aero Power Play Running Shoes (Navy)</h2>
-            <h1> </h1>
-          </th>
-        </tr>
-        <tr>
-          <td><img src="./images/p3.jpg" height="150" width="150/"></td>
-          <td>
-            <ul style="margin: 2px 0px 22px 30px; padding: 0px; line-height: 1.7em; font-style: normal; font-size: 13.6px; color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">
-              <li style="margin: 0px; padding: 0px;">Colour:<b style="margin: 0px; padding: 0px;"><strong
-
-                    style="margin: 0px; padding: 0px;">Blue</strong></b></li>
-              <li style="margin: 0px; padding: 0px;">Outer Material :<span class="Apple-converted-space">&nbsp;</span><b
-
-                  style="margin: 0px; padding: 0px;">Synthetic Leather</b></li>
-              <li style="margin: 0px; padding: 0px;">For :<span class="Apple-converted-space">&nbsp;</span><b
-
-                  style="margin: 0px; padding: 0px;">Men</b></li>
-              <li style="margin: 0px; padding: 0px;">Occasion :<span class="Apple-converted-space">&nbsp;</span><b
-
-                  style="margin: 0px; padding: 0px;">Sports</b></li>
-			<li style="margin: 0px; padding: 0px;">Cost :<span class="Apple-converted-space">&nbsp;</span><b
-
-                  style="margin: 0px; padding: 0px;">GBP 74999</b></li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td> <br>
-          </td>
-          <td style="height: 202.15px;">
-            <div class="HoUsOylgO09akK_zdKEbx" data-reactid="608" style="box-sizing: border-box; margin: 0px; padding: 0px 0px 16px; font-size: 18px; white-space: nowrap; line-height: 1.4; color: rgb(33, 33, 33); font-family: Roboto, Arial, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Payment
-              Options</div>
-            <ul data-reactid="609" style="box-sizing: border-box; margin: 0px; padding: 0px; color: rgb(33, 33, 33); font-family: Roboto, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">
-              <li class="_1KuY3TP_J3Hv-lLEkxjB8s row" data-reactid="610" style="box-sizing: border-box; margin: 0px; padding: 0px 0px 16px; list-style: none; width: 731px; display: flex; flex-flow: row wrap;">
-                <div class="vmXPrixrHQLBSHPP72I6J col col-3-12" data-reactid="611"
-
-                  style="box-sizing: border-box; margin: 0px; padding: 0px 8px 0px 0px; display: inline-block; vertical-align: top; width: 182.75px; color: rgb(135, 135, 135);">&nbsp;Cash
-                  on Delivery</div>
-                <ul class="_3dG3ix2tuwyl1bXBleeRPN col col-9-12" data-reactid="612"
-
-                  style="box-sizing: border-box; margin: 0px; padding: 0px; display: inline-block; vertical-align: top; width: 548.25px; line-height: 1.4; color: rgb(33, 33, 33);">
-                  <li class="sNqDogZb5xVpFVyx8ohJ9" data-reactid="613" style="box-sizing: border-box; margin: 0px; padding: 0px; list-style: none;">No</li>
-                </ul>
-              </li>
-              <li class="_1KuY3TP_J3Hv-lLEkxjB8s row" data-reactid="618" style="box-sizing: border-box; margin: 0px; padding: 0px 0px 16px; list-style: none; width: 731px; display: flex; flex-flow: row wrap;">
-                <div class="vmXPrixrHQLBSHPP72I6J col col-3-12" data-reactid="619"
-
-                  style="box-sizing: border-box; margin: 0px; padding: 0px 8px 0px 0px; display: inline-block; vertical-align: top; width: 182.75px; color: rgb(135, 135, 135);">Credit
-                  Card</div>
-                <ul class="_3dG3ix2tuwyl1bXBleeRPN col col-9-12" data-reactid="620"
-
-                  style="box-sizing: border-box; margin: 0px; padding: 0px; display: inline-block; vertical-align: top; width: 548.25px; line-height: 1.4; color: rgb(33, 33, 33);">
-                  <li class="sNqDogZb5xVpFVyx8ohJ9" data-reactid="621" style="box-sizing: border-box; margin: 0px; padding: 0px; list-style: none;">Yes</li>
-                </ul>
-              </li>
-              <li class="_1KuY3TP_J3Hv-lLEkxjB8s row" data-reactid="622" style="box-sizing: border-box; margin: 0px; padding: 0px; list-style: none; width: 731px; display: flex; flex-flow: row wrap;">
-                <div class="vmXPrixrHQLBSHPP72I6J col col-3-12" data-reactid="623"
-
-                  style="box-sizing: border-box; margin: 0px; padding: 0px 8px 0px 0px; display: inline-block; vertical-align: top; width: 182.75px; color: rgb(135, 135, 135);">&nbsp;Net
-                  Banking</div>
-                <ul class="_3dG3ix2tuwyl1bXBleeRPN col col-9-12" data-reactid="624"
-
-                  style="box-sizing: border-box; margin: 0px; padding: 0px; display: inline-block; vertical-align: top; width: 548.25px; line-height: 1.4; color: rgb(33, 33, 33);">
-                  <li class="sNqDogZb5xVpFVyx8ohJ9" data-reactid="625" style="box-sizing: border-box; margin: 0px; padding: 0px; list-style: none;">Yes</li>
-                </ul>
-              </li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td> <br>
-          </td>
-          <td style="text-align: center;"> <button onclick="addToCart()" type="button">Add To Cart</button><!--<a href="product3buy.html"> BUY NOW!!
-            </a>--></td>
-        </tr>
-      </tbody>
-    </table>
-  </body>
+                alt="icon" src="images/icon.jpg"><-->
+					</h1>
+				</th>
+				<th align="center">
+					<h1 style="color: #cc66ff;" align="center">&nbsp;Mykita</h1>
+				</th>
+				<th>
+					<h1 align="center">
+						<a href="product3buy.html"><img
+							style="width: 70px; height: 38px;" title="ICON" alt="icon"
+							src="images/icon.jpg"></a>
+					</h1>
+				</th>
+			</tr>
+		</tbody>
+	</table>
+	<table style="width: 901px; height: 469px;" align="centre">
+		<tbody>
+			<tr>
+				<th></th>
+				<th>
+					<h2
+						style="margin: 0px 0px 10px; padding: 0px; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 22.44px; line-height: normal; font-family: Arial, Helvetica, sans-serif; letter-spacing: -1px; color: rgb(0, 0, 0); orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; text-align: left;">
+						Aero Power Play Running Shoes (Navy)</h2>
+					<h1></h1>
+				</th>
+			</tr>
+			<tr>
+				<td><img src="./images/p3.jpg" height="150" width="150/"></td>
+				<td>
+					<ul
+						style="margin: 2px 0px 22px 30px; padding: 0px; line-height: 1.7em; font-style: normal; font-size: 13.6px; color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">
+						<li style="margin: 0px; padding: 0px;">Colour:<b
+							style="margin: 0px; padding: 0px;"><strong
+								style="margin: 0px; padding: 0px;">Blue</strong></b></li>
+						<li style="margin: 0px; padding: 0px;">Outer Material :<span
+							class="Apple-converted-space">&nbsp;</span><b
+							style="margin: 0px; padding: 0px;">Synthetic Leather</b></li>
+						<li style="margin: 0px; padding: 0px;">For :<span
+							class="Apple-converted-space">&nbsp;</span><b
+							style="margin: 0px; padding: 0px;">Men</b></li>
+						<li style="margin: 0px; padding: 0px;">Occasion :<span
+							class="Apple-converted-space">&nbsp;</span><b
+							style="margin: 0px; padding: 0px;">Sports</b></li>
+						<li style="margin: 0px; padding: 0px;">Cost :<span
+							class="Apple-converted-space">&nbsp;</span><b
+							style="margin: 0px; padding: 0px;">GBP 74999</b></li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td><br></td>
+				<td style="height: 202.15px;">
+					<div class="HoUsOylgO09akK_zdKEbx" data-reactid="608"
+						style="box-sizing: border-box; margin: 0px; padding: 0px 0px 16px; font-size: 18px; white-space: nowrap; line-height: 1.4; color: rgb(33, 33, 33); font-family: Roboto, Arial, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Payment
+						Options</div>
+					<ul data-reactid="609"
+						style="box-sizing: border-box; margin: 0px; padding: 0px; color: rgb(33, 33, 33); font-family: Roboto, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">
+						<li class="_1KuY3TP_J3Hv-lLEkxjB8s row" data-reactid="610"
+							style="box-sizing: border-box; margin: 0px; padding: 0px 0px 16px; list-style: none; width: 731px; display: flex; flex-flow: row wrap;">
+							<div class="vmXPrixrHQLBSHPP72I6J col col-3-12"
+								data-reactid="611"
+								style="box-sizing: border-box; margin: 0px; padding: 0px 8px 0px 0px; display: inline-block; vertical-align: top; width: 182.75px; color: rgb(135, 135, 135);">&nbsp;Cash
+								on Delivery</div>
+							<ul class="_3dG3ix2tuwyl1bXBleeRPN col col-9-12"
+								data-reactid="612"
+								style="box-sizing: border-box; margin: 0px; padding: 0px; display: inline-block; vertical-align: top; width: 548.25px; line-height: 1.4; color: rgb(33, 33, 33);">
+								<li class="sNqDogZb5xVpFVyx8ohJ9" data-reactid="613"
+									style="box-sizing: border-box; margin: 0px; padding: 0px; list-style: none;">No</li>
+							</ul>
+						</li>
+						<li class="_1KuY3TP_J3Hv-lLEkxjB8s row" data-reactid="618"
+							style="box-sizing: border-box; margin: 0px; padding: 0px 0px 16px; list-style: none; width: 731px; display: flex; flex-flow: row wrap;">
+							<div class="vmXPrixrHQLBSHPP72I6J col col-3-12"
+								data-reactid="619"
+								style="box-sizing: border-box; margin: 0px; padding: 0px 8px 0px 0px; display: inline-block; vertical-align: top; width: 182.75px; color: rgb(135, 135, 135);">Credit
+								Card</div>
+							<ul class="_3dG3ix2tuwyl1bXBleeRPN col col-9-12"
+								data-reactid="620"
+								style="box-sizing: border-box; margin: 0px; padding: 0px; display: inline-block; vertical-align: top; width: 548.25px; line-height: 1.4; color: rgb(33, 33, 33);">
+								<li class="sNqDogZb5xVpFVyx8ohJ9" data-reactid="621"
+									style="box-sizing: border-box; margin: 0px; padding: 0px; list-style: none;">Yes</li>
+							</ul>
+						</li>
+						<li class="_1KuY3TP_J3Hv-lLEkxjB8s row" data-reactid="622"
+							style="box-sizing: border-box; margin: 0px; padding: 0px; list-style: none; width: 731px; display: flex; flex-flow: row wrap;">
+							<div class="vmXPrixrHQLBSHPP72I6J col col-3-12"
+								data-reactid="623"
+								style="box-sizing: border-box; margin: 0px; padding: 0px 8px 0px 0px; display: inline-block; vertical-align: top; width: 182.75px; color: rgb(135, 135, 135);">&nbsp;Net
+								Banking</div>
+							<ul class="_3dG3ix2tuwyl1bXBleeRPN col col-9-12"
+								data-reactid="624"
+								style="box-sizing: border-box; margin: 0px; padding: 0px; display: inline-block; vertical-align: top; width: 548.25px; line-height: 1.4; color: rgb(33, 33, 33);">
+								<li class="sNqDogZb5xVpFVyx8ohJ9" data-reactid="625"
+									style="box-sizing: border-box; margin: 0px; padding: 0px; list-style: none;">Yes</li>
+							</ul>
+						</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td><br></td>
+				<td style="text-align: center;">
+					<button onclick="addToCart()" type="button">Add To Cart</button> <!--<a href="product3buy.html"> BUY NOW!!
+            </a>-->
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
 </html>

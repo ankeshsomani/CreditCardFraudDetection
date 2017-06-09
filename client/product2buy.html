@@ -3,161 +3,142 @@
 To change this license header, choose License Headers in Project Properties.To change this template file, choose Tools | Templates
 and open the template in the editor.-->
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Mykita Shopping Destination</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/image_slide.js"></script>
-	 <script type="text/javascript" src="js/formatDate.js"></script>
-	
-	
-	<script>
-	
-	
-	<!--		console.log(jsonData);
-<!--document.getElementById("demo").innerHTML =jsonData
-<!--document.getElementById("demo").innerHTML = d;
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<title>Mykita Shopping Destination</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/image_slide.js"></script>
+<script type="text/javascript" src="js/formatDate.js"></script>
+<script>
+	var totalAmount=localStorage.price;
 	function loadDoc() {
 	var d=new Date().format("%d/%m/%Y %H:%M:%S")
-	var t =(new Date()).getTime();
-	<!-- var jsonData='{"transactions": [{"accountId":100,"transactionId":'+d.toString()+',"posid": 1234,"transactionDate": "26/05/2017 13:54:00",+"description": "Hello","amount": 10999}]}';
-	var jData='{"transactions": [{"accountId":100,"transactionId":"'+t+'","posid": 1234,"transactionDate": "'
-	 var jsonData= jData+ d.toString()+'","description": "Hello","amount":  10999}]}';
+	<!-- var jsonData='{"transactions": [{"accountId":100,"transactionId":"T1235","posid": 1234,"transactionDate": "26/05/2017 13:54:00",+"description": "Hello","amount": 74999}]}';
+	var jData1='{"transactions": [{"accountId":100,"transactionId":"T"
+	var jData=  jData1+ d.toString() +","posid": 1234,"transactionDate": "'
+	 var jsonData= jData+ d.toString()+'","description": "Hello","amount":' +  Number(localStorage.price)+'}]}';
 	var jsonParam = JSON.parse(jsonData);
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
   <!-- document.getElementById("demo").innerHTML = "click"
   document.getElementById("demo").innerHTML = d
-  
     if (this.readyState == 4 && this.status == 200) {
-    }      document.getElementById("demo").innerHTML = "Thanks  for purchasing product! Your  transaction was successful."; //this.responseText;
-
+    }      document.getElementById("demo").innerHTML = "Thanks  for purchasing product! Your  transaction was successful."+localStorage.price; //this.responseText;
   };
-  xhttp.open("POST", "http://34.210.104.45:8081/addTransactions", true);
+  xhttp.open("POST", "http://http://34.210.104.45:8081/addTransactions", true);
 	xhttp.setRequestHeader("Content-Type", "application/json");
    xhttp.send(jsonData);
+	    if(typeof(Storage) != "undefined") {
+	if (localStorage.price) {
+    localStorage.price =0 ;//reset
+} else {
+    localStorage.price = 0;//reset
 }
-	
-	
-	
-	
-<!--	$.ajax({
- <!--   url: 'path/to/testservlet',
- <!--   data:{"transactions":[{
-	<!--"accountId":100,
-<!--	"transactionId":"T1234",
-<!--	"posid":1234,
-<!--	"transactionDate":d,
-<!--	"description":"Hello",
-<!--	"amount":100}]},
-  <!--  type: 'POST'
-<!--});? -->
+}
+}
 	</script>
-	
-  </head>
-  <body>
-    <div class="sidebar">
-      <div style="height:50px;"></div>
-      <div class="sidebar_item">
-        <h2>Brand</h2>
-        <p><input name="Blue" value="Blue" type="checkbox"> Addidas<br>
-          <input name="Black" value="Black" checked="checked" type="checkbox">
-          Nike<br>
-          <input name="Black" value="Black" checked="checked" type="checkbox">
-          Reebok<br>
-        </p>
-      </div>
-      <!--close sidebar_item-->
-      <div class="sidebar_item">
-        <h2>Color</h2>
-        <p><input name="Blue" value="Blue" type="checkbox"> Blue<br>
-          <input name="Blue" value="Blue" type="checkbox"> Yellow<br>
-          <input name="Blue" value="Blue" type="checkbox"> White<br>
-          <input name="Blue" value="Blue" type="checkbox"> Green<br>
-          <input name="Black" value="Black" checked="checked" type="checkbox">
-          Black</p>
-      </div>
-      <!--close sidebar_item-->
-      <div class="sidebar_item">
-        <h2>Size</h2>
-        <p><input name="Blue" value="Blue" type="checkbox"> Small<br>
-          <input name="Blue" value="Blue" type="checkbox"> Medium<br>
-          <input name="Blue" value="Blue" type="checkbox"> Large<br>
-          <input name="Blue" value="Blue" type="checkbox"> XXL<br>
-        </p>
-      </div>
-      <!--close sidebar_item-->
-      <div class="sidebar_item">
-        <h2>Discount</h2>
-        <p><input name="Blue" value="Blue" type="checkbox"> &lt; 5%<br>
-          <input name="Blue" value="Blue" type="checkbox"> &lt; 10%<br>
-          <input name="Blue" value="Blue" type="checkbox"> &lt; 15%<br>
-        </p>
-      </div>
-      <!--close sidebar_item--> </div>
-    <!--close sidebar-->
-    <table style="width: 904px; height: 35px;" align="centre">
-      <tbody>
-        <tr>
-          <th>
-            <h1 align="center"><img style="width: 70px; height: 38px;" title="ICON"
 
-                alt="icon" src="images/icon.jpg"></h1>
-          </th>
-          <th align="center">
-            <h1 style="color:#cc66ff;" align="center">&nbsp;Mykita</h1>
-          </th>
-        </tr>
-      </tbody>
-    </table>
-    <h3> Credit Card Payment</h3>
-    <form name="send" action="JsonServlet">
-      You are making purshase of  amount : Rs 10999.00 <br><br><br>
-	  Please Enter Details
-      <table style="width: 281px; height: 152px;">
-        <tbody>
-          <tr>
-            <td> <br>
-            </td>
-            <td> <img style="width: 122px; height: 19px;" src="images/cc1.jpg"><br>
-            </td>
-          </tr>
-          <tr>
-            <td> Card number: </td>
-            <td> <input name="fname"  type="text"><br>
-            </td>
-          </tr>
-          <tr>
-            <td> Expiry Date(MM/YY): </td>
-            <td> <input name="lname"  type="text"> </td>
-          </tr>
-          <tr>
-            <td> CVV: </td>
-            <td> <input name="lname"  type="text"> </td>
-          </tr>
-          <tr>
-            <td> Name: </td>
-            <td> <input name="lname"  type="text"> </td>
-          </tr>
-          <tr>
-            <td> <br>
-            </td>
-            <td> <input value="Submit" type="button" onclick="loadDoc()">
-		  </td>
-        </tr>
-      </tbody>
-    </table>
+</head>
+<body>
+	<div class="sidebar">
+		<div style="height: 50px;"></div>
+		<div class="sidebar_item">
+			<h2>Brand</h2>
+			<p>
+				<input name="Blue" value="Blue" type="checkbox"> Addidas<br>
+				<input name="Black" value="Black" checked="checked" type="checkbox">
+				Nike<br> <input name="Black" value="Black" checked="checked"
+					type="checkbox"> Reebok<br>
+			</p>
+		</div>
+		<!--close sidebar_item-->
+		<div class="sidebar_item">
+			<h2>Color</h2>
+			<p>
+				<input name="Blue" value="Blue" type="checkbox"> Blue<br>
+				<input name="Blue" value="Blue" type="checkbox"> Yellow<br>
+				<input name="Blue" value="Blue" type="checkbox"> White<br>
+				<input name="Blue" value="Blue" type="checkbox"> Green<br>
+				<input name="Black" value="Black" checked="checked" type="checkbox">
+				Black
+			</p>
+		</div>
+		<!--close sidebar_item-->
+		<div class="sidebar_item">
+			<h2>Size</h2>
+			<p>
+				<input name="Blue" value="Blue" type="checkbox"> Small<br>
+				<input name="Blue" value="Blue" type="checkbox"> Medium<br>
+				<input name="Blue" value="Blue" type="checkbox"> Large<br>
+				<input name="Blue" value="Blue" type="checkbox"> XXL<br>
+			</p>
+		</div>
+		<!--close sidebar_item-->
+		<div class="sidebar_item">
+			<h2>Discount</h2>
+			<p>
+				<input name="Blue" value="Blue" type="checkbox"> &lt; 5%<br>
+				<input name="Blue" value="Blue" type="checkbox"> &lt; 10%<br>
+				<input name="Blue" value="Blue" type="checkbox"> &lt; 15%<br>
+			</p>
+		</div>
+		<!--close sidebar_item-->
+	</div>
+	<!--close sidebar-->
+	<table style="width: 904px; height: 35px;" align="centre">
+		<tbody>
+			<tr>
+				<th>
+					<h1 align="center">
+						<img style="width: 70px; height: 38px;" title="ICON" alt="icon"
+							src="images/icon.jpg">
+					</h1>
+				</th>
+				<th align="center">
+					<h1 style="color: #cc66ff;" align="center">&nbsp;Mykita</h1>
+				</th>
+			</tr>
+		</tbody>
+	</table>
+	<h3>Credit Card Payment</h3>
+	<form name="send" action="JsonServlet">
+		You are making purshase of amount : GBP 10999.00 <br> <br> <br>
+		Please Enter Details
+		<table style="width: 281px; height: 152px;">
+			<tbody>
+				<tr>
+					<td><br></td>
+					<td><img style="width: 122px; height: 19px;"
+						src="images/cc1.jpg"><br></td>
+				</tr>
+				<tr>
+					<td>Card number:</td>
+					<td><input name="fname" type="text"><br></td>
+				</tr>
+				<tr>
+					<td>Expiry Date(MM/YY):</td>
+					<td><input name="lname" type="text"></td>
+				</tr>
+				<tr>
+					<td>CVV:</td>
+					<td><input name="lname" type="text"></td>
+				</tr>
+				<tr>
+					<td>Name:</td>
+					<td><input name="lname" type="text"></td>
+				</tr>
+				<tr>
+					<td><br></td>
+					<td><input value="Submit" type="button" onclick="loadDoc()">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+	<p id="demo"></p>
 
- 
-</form>
-<p id="demo"></p>
 
-<script>
-document.getElementById("demo").innerHTML = d;//new Date().format("%d/%m/%Y %H:%M:%S");
-</script>
-
-    
-
-</body></html>
+</body>
+</html>
