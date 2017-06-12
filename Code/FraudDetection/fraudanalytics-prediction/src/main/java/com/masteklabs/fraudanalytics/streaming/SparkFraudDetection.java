@@ -163,7 +163,7 @@ public class SparkFraudDetection implements Serializable{
 										result.setPrediction(t.get(18).toString());
 										result.setAccountId(new Long(t.get(0).toString()));
 										result.setAmount(new Double(t.get(2).toString()));
-										result.setCardNumber(new Long(t.get(7).toString()));
+										result.setCardNumber(new Double(t.get(7).toString()).longValue());
 										Tuple2<String, PredictionResult> tuple = new Tuple2<String, PredictionResult>(
 												t.get(17).toString(), result);
 										return tuple;
