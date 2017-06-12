@@ -79,7 +79,7 @@ public class KafkaHelper {
 					suspectedTransactionEntity.setTransactionId(predResult.getUniqueIdentifier());
 					suspectedTransactionEntity.setFraudStatus(0);
 					suspectedTransactionEntity.setAmount(predResult.getAmount());
-					suspectedTransactionEntity.setCardNumber(predResult.setCardNumber());
+					suspectedTransactionEntity.setCardNumber(predResult.getCardNumber());
 					SuspectedTransactionRepo suspectedTransRepo=(SuspectedTransactionRepo)appContext.getBean("suspectedTransactionRepo");
 					suspectedTransRepo.save(suspectedTransactionEntity);
 				}

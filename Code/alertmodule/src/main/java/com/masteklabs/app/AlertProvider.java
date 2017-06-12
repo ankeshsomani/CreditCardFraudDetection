@@ -58,7 +58,7 @@ public class AlertProvider {
  if(prediction.equals("1.0")){
 
                 MailHelper.sendMail(retrieveRecipientAddress(record.value()), subject, message);
-				SMSHelper.sendSMS(retrieveRecipientSMS(record.value()),message);
+				SMSHelper.sendSMSMessage(retrieveRecipientSMS(record.value()),message);
 }
         }
 

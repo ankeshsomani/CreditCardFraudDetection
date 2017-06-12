@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Region;
+import com.amazonaws.regions.Regions;
 import com.amazonaws.services.sns.AmazonSNSClient;
 import com.amazonaws.services.sns.model.MessageAttributeValue;
 import com.amazonaws.services.sns.model.PublishRequest;
@@ -21,13 +22,12 @@ public class SMSHelper {
 		// TODO Auto-generated method stub	
 		String message = "Demo SMS message body";
 		String phoneNumber = "Phone";
-		Map<String, MessageAttributeValue> smsAttributes = new HashMap<String, MessageAttributeValue>();
-		sendSMSMessage( message, phoneNumber, smsAttributes);
+		sendSMSMessage( message, phoneNumber);
 	}
 
-	private static void sendSMSMessage( String message, String phoneNumber) {
+	public static void sendSMSMessage( String message, String phoneNumber) {
 		// TODO Auto-generated method stub
-		@SuppressWarnings("deprecation");
+		//@SuppressWarnings("deprecation");
 		try{
 		AmazonSNSClient snsClient = new AmazonSNSClient(new BasicAWSCredentials(ACCESS_KEY, SECRET_KEY));
 		snsClient.withRegion(Region.getRegion(Regions.US_WEST_2));
