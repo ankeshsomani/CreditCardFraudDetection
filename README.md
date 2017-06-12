@@ -27,8 +27,7 @@ Deployment Guide for Fraud detection POC:-
 	ps -ef|grep mysql
 	
 	connect to mysql instance using the below command
-	mysql -pmastek
-	Note:- passowrd of mysql is mastek.
+	mysql -p<<password>>
 
 4. check if hadoop namenode,datanodes are running
 	ps -ef|grep hadoop
@@ -57,7 +56,6 @@ Deployment Guide for Fraud detection POC:-
 	java -cp /data/masteklabs/FraudDetectionCode/mysqlredis/target/mysqlredis-0.0.1-SNAPSHOT-jar-with-dependencies.jar com.masteklabs.mysqlredis.test.Application
 	
 	connect to redis using redic-cli and validate the data population.
-	
 	
 8. Check if transaction generator module is running
 	ps -ef|grep server.js
