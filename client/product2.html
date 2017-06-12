@@ -12,9 +12,12 @@
 		if (typeof (Storage) !== "undefined") {
 			if (localStorage.price) {
 				localStorage.price = Number(localStorage.price) + 10999;
+				localStorage.itemCount = Number(localStorage.itemCount) + 1;
 			} else {
 				localStorage.price = 10999;
+				localStorage.itemCount = 1;
 			}
+			document.getElementById("lblCartCount").innerHTML = localStorage.itemCount
 		}
 		//	    if(typeof(Storage) != "undefined") {
 		//	if (localStorage.price) {
@@ -23,9 +26,7 @@
 		//    localStorage.price = 0;//reset
 		//}
 		//}
-		document.getElementById("result").innerHTML = "You have clicked the button "
-				+ localStorage.price + " time(s).";
-
+		//document.getElementById("result").innerHTML = "You have clicked the button "	+ localStorage.price + " time(s).";
 	}
 </script>
 </head>
@@ -91,6 +92,9 @@
 						<a href="product3buy.html"><img
 							style="width: 70px; height: 38px;" title="ICON" alt="icon"
 							src="images/icon.jpg"></a>
+							<label ID="lblCartCount" ForeColor="White" />
+						<script> document.getElementById("lblCartCount").innerHTML = localStorage.itemCount</script>
+							
 					</h1>
 				</th>
 			</tr>

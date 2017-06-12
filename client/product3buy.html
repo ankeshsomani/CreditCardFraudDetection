@@ -32,11 +32,16 @@ and open the template in the editor.-->
 	xhttp.setRequestHeader("Content-Type", "application/json");
    xhttp.send(jsonData);
 	    if(typeof(Storage) != "undefined") {
-	if (localStorage.price) {
+	if (localStorage.price && localStorage.itemCount) {
     localStorage.price =0 ;//reset
+    localStorage.itemCount=0;//reset
 } else {
     localStorage.price = 0;//reset
+    localStorage.itemCount=0;//reset
+    
 }
+	document.getElementById("price").innerHTML = localStorage.price;
+    document.getElementById("lblCartCount").innerHTML = localStorage.itemCount;
 }
 }
 	</script>
@@ -91,13 +96,22 @@ and open the template in the editor.-->
 		<tbody>
 			<tr>
 				<th>
-					<h1 align="center">
+					<!-- <h1 align="center">
 						<img style="width: 70px; height: 38px;" title="ICON" alt="icon"
-							src="images/icon.jpg">
-					</h1>
+							src="images/icon.jpg"/>
+					</h1> -->
 				</th>
 				<th align="center">
 					<h1 style="color: #cc66ff;" align="center">&nbsp;Mykita</h1>
+				</th>
+				<th>
+					<h1 align="center">
+						<img style="width: 70px; height: 38px;" title="ICON" alt="icon"
+							src="images/icon.jpg" /> 
+							<label ID="lblCartCount" ForeColor="White" />
+						<script> document.getElementById("lblCartCount").innerHTML = localStorage.itemCount</script>
+
+					</h1>
 				</th>
 			</tr>
 		</tbody>

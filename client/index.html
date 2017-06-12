@@ -7,6 +7,22 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/image_slide.js"></script>
+<script type="text/javascript">
+
+if(typeof(Storage) != "undefined") {
+	if ( localStorage.itemCount && Number(localStorage.price)>0) {
+		// document.getElementById("lblCartCount").innerHTML = localStorage.itemCount;
+} else {
+
+    localStorage.itemCount=0;//reset
+}
+	
+   
+}else{
+	localStorage.itemCount=0;//reset
+}
+document.getElementById("lblCartCount").innerHTML = localStorage.itemCount;
+</script>
 </head>
 <body>
 	<div class="sidebar">
@@ -71,7 +87,10 @@
 					<h1 align="center">
 						<a href="product3buy.html"><img
 							style="width: 70px; height: 38px;" title="ICON" alt="icon"
-							src="images/icon.jpg"></a>
+							src="images/icon.jpg"></a> <label ID="lblCartCount"
+							ForeColor="White" />
+						<script>document.getElementById("lblCartCount").innerHTML = localStorage.itemCount</script>
+
 					</h1>
 				</th>
 			</tr>
